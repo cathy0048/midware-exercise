@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="tairManager" class="com.taobao.tair.impl.mc.MultiClusterTairManager"
+		init-method="init">
+		<property name="configID">
+			<value>mdbcomm-daily</value> <!-- 对应申请页面详情的左侧内容,如http://tair.alibaba-inc.com/namespace/4171?spm=0.0.0.0.0igDJS -->
+		</property>
+		<property name="dynamicConfig">
+			<value type="java.lang.Boolean">true</value>
+		</property>
+	</bean>
+	
+	<bean id="tairHandler" class="tair.TairHandler">
+	</bean>
+</beans>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="hsfDemoServiceImpl" class="hsf.impl.HSFDemoServiceImpl" />
+
+	<bean id="hsfDemoServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean"
+		init-method="init">
+		<property name="serviceInterface">
+			<value>hsf.HSFDemoService</value>
+		</property>
+		<property name="target">
+			<ref bean="hsfDemoServiceImpl" />
+		</property>
+		<property name="serviceName">
+			<value>HSFDemoService</value>
+		</property>
+		<property name="serviceVersion">
+			<value>1.0.0.daily</value>
+		</property>
+		<property name="serviceGroup">
+			<value>HSF</value>
+		</property>
+	</bean>
+
+	<bean id="hsfDemoServiceConsumer" class="com.taobao.hsf.app.spring.util.HSFSpringConsumerBean"
+		init-method="init">
+		<property name="interfaceName">
+			<value>hsf.HSFDemoService</value>
+		</property>
+		<property name="version">
+			<value>1.0.0.daily</value>
+		</property>
+	</bean>
+</beans>
